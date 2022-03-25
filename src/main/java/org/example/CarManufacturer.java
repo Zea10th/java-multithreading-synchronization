@@ -18,8 +18,9 @@ public class CarManufacturer implements Runnable {
                 e.printStackTrace();
             }
             carShop.obtainCar();
+            System.out.println("Производитель доставил автомобиль.");
         }
         System.out.println("Производитель прекратил работу на сегодня.");
-        carShop.setSupplyOver(true);
+        carShop.setSupplyIsOver();
     }
 }

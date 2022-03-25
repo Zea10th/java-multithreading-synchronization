@@ -5,7 +5,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class App {
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
         final ExecutorService executorService = Executors.newFixedThreadPool(4);
         final CarShop carShop = CarShop.getInstance();
 
