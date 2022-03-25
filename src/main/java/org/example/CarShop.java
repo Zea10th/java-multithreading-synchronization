@@ -47,7 +47,7 @@ public class CarShop extends ReentrantLock {
     }
 
     public boolean isClosed() {
-        if (isSupplyOver) isClosed = true;
+        if (isSupplyOver && carCapacity == 0) isClosed = true;
         return isClosed;
     }
 
