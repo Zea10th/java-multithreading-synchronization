@@ -5,28 +5,20 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class CarShop extends ReentrantLock {
 
-    private static CarShop instance;
     private static Lock lock;
     private volatile int carCapacity = 0;
     private boolean isSupplyOver = false;
     private boolean isClosed = false;
 
-    private CarShop() {
+    public CarShop() {
+        lock = new ReentrantLock();
     }
 
-    public static CarShop getInstance() {
-        if (instance == null) {
-            instance = new CarShop();
-            lock = new ReentrantLock();
-        }
-        return instance;
-    }
-
-
-    public boolean sellCar(long delay) {
+    public boolean sellCar() {
         boolean isSold = false;
         try {
-            if (lock.tryLock() && carCapacity != 0) {
+            lock.lock();
+            if (carCapacity != 0) {
                 carCapacity--;
                 isSold = true;
             }
@@ -39,10 +31,6 @@ public class CarShop extends ReentrantLock {
     public void obtainCar() {
         carCapacity++;
         System.out.println("Продается новый автомобиль!");
-        notifyCarCapacity();
-    }
-
-    private void notifyCarCapacity() {
         System.out.println("Ожидают продажи " + carCapacity + " автомобиля(ей).");
     }
 
