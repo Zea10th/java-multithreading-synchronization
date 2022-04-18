@@ -20,8 +20,6 @@ public class Customer implements Runnable {
                 Thread.sleep(delay);
                 if (carShop.sellCar()) {
                     System.out.println("Success: " + CUSTOMER_NAME + " уехал на новеньком авто.");
-                } else {
-                    System.out.println("Failed: " + CUSTOMER_NAME + " не дождался и вышел из автосалона.");
                 }
             } catch (InterruptedException e) {
                 e.printStackTrace();

@@ -14,7 +14,7 @@ public class App {
 
         for (int i = 0; i < 3; i++) {
             Thread.sleep(DELAY);
-            executorService.submit(new Thread(null, new Customer(carShop), "Покупатель" + i));
+            executorService.submit(new Customer(carShop));
         }
 
         while (true) {
